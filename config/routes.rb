@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  root to: 'visitors#index'
+
+  resources :propbetsheets
+authenticated :user do
+  root :to => 'users#dashboard', as: :user_root
+end
+
+  root :to => 'visitors#index'
   devise_for :users
   resources :users
 end

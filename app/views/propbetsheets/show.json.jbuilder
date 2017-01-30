@@ -1,0 +1,1 @@
+json.partial! "propbetsheets/propbetsheet", propbetsheet: @propbetsheet

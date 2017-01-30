@@ -1,0 +1,32 @@
+<%= form_for(propbetsheet) do |f| %>
+  <% if propbetsheet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(propbetsheet.errors.count, "error") %> prohibited this propbetsheet from being saved:</h2>
+
+      <ul>
+      <% propbetsheet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :paid %>
+    <%= f.check_box :paid %>
+  </div>
+
+  <div class="field">
+    <%= f.label :total_points %>
+    <%= f.number_field :total_points %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

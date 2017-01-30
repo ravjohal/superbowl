@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Propbetsheets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Paid</th>
+      <th>Total points</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @propbetsheets.each do |propbetsheet| %>
+      <tr>
+        <td><%= propbetsheet.name %></td>
+        <td><%= propbetsheet.paid %></td>
+        <td><%= propbetsheet.total_points %></td>
+        <td><%= link_to 'Show', propbetsheet %></td>
+        <td><%= link_to 'Edit', edit_propbetsheet_path(propbetsheet) %></td>
+        <td><%= link_to 'Destroy', propbetsheet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Propbetsheet', new_propbetsheet_path %>
