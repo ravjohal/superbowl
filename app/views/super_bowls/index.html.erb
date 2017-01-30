@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Super Bowls</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Year</th>
+      <th>Number</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @super_bowls.each do |super_bowl| %>
+      <tr>
+        <td><%= super_bowl.name %></td>
+        <td><%= super_bowl.year %></td>
+        <td><%= super_bowl.number %></td>
+        <td><%= link_to 'Show', super_bowl %></td>
+        <td><%= link_to 'Edit', edit_super_bowl_path(super_bowl) %></td>
+        <td><%= link_to 'Destroy', super_bowl, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Super Bowl', new_super_bowl_path %>

@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @prop_bet_sheet.name %>
+</p>
+
+<p>
+  <strong>Totals points:</strong>
+  <%= @prop_bet_sheet.totals_points %>
+</p>
+
+<p>
+  <strong>Paid:</strong>
+  <%= @prop_bet_sheet.paid %>
+</p>
+
+<div>
+	<table class="table"> 
+		<thead>
+		    <tr>
+		      <th>Question</th>
+		      <th>Points</th>
+		      <th>Your Answer</th>
+		    </tr>
+		  </thead>
+
+		  <tbody>
+		  	<% @prop_bet_sheet.prop_bets.order(:id).each do |prop_bet| %>
+		  	<tr>
+		  		<td><%= prop_bet.question.question %> </td>
+				<td><%= prop_bet.question.weight %> </td>
+				<td><%= prop_bet.answer.name %> </td>
+		    </tr>
+		    <% end %>
+		  </tbody>
+	</table>
+</div>
+
+<%= link_to 'Edit', edit_prop_bet_sheet_path(@prop_bet_sheet) %> |
+<%= link_to 'Back', prop_bet_sheets_path %>

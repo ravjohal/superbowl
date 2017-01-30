@@ -1,0 +1,1 @@
+json.partial! "super_bowls/super_bowl", super_bowl: @super_bowl

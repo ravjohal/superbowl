@@ -1,0 +1,52 @@
+<%= simple_form_for @prop_bet_sheet do |f| %>
+  <% if prop_bet_sheet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(prop_bet_sheet.errors.count, "error") %> prohibited this Prop Bet Sheet from being saved:</h2>
+
+      <ul>
+      <% prop_bet_sheet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+<!-- Questions and Answers -->
+  <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Question</th>
+          <th>Points</th>
+          <th>Choose Answer</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <%= f.simple_fields_for :prop_bets, @prop_bets do |pb| %>
+          <tr>
+            <% puts "QUESTION ID" + pb.object.question.inspect %>
+            <%= pb.input :question_id, :as => :hidden, :input_html => { :value => pb.object.question.id} %>
+            <%= pb.input :prop_bet_sheet_id, :as => :hidden, :input_html => { :value => @prop_bet_sheet.id} %>
+            <%= pb.input :super_bowl_id, :as => :hidden, :input_html => { :value => @super_bowl.id} %>
+            <%= pb.input :user_id, :as => :hidden, :input_html => { :value => current_user.id} %>
+
+            
+              <td><%= pb.input :question, label: false, as: :text, disabled: true, :input_html => { :value => pb.object.question.question } %></td>
+              <td><%= pb.input :weight, label: false, disabled: true, :input_html => { :value => pb.object.question.weight }  %></td>
+              <td><%= pb.association :answer, label: false, :collection => pb.object.question.options, :input_html => { :multiple => false } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>

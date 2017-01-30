@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-    @propbetsheets_count = current_user.propbetsheets.count
+    @prop_bet_sheets_count = current_user.prop_bet_sheet
     @user = current_user
     unless @user == current_user
       redirect_to root_path, :alert => "Access denied."

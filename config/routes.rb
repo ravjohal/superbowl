@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :propbetsheets
+  resources :prop_bet_sheets
+  resources :super_bowls
+  resources :answers
+  resources :questions
 authenticated :user do
   root :to => 'users#dashboard', as: :user_root
 end

@@ -1,0 +1,1 @@
+json.array! @super_bowls, partial: 'super_bowls/super_bowl', as: :super_bowl

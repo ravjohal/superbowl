@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @super_bowl.name %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @super_bowl.year %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @super_bowl.number %>
+</p>
+
+<%= link_to 'Edit', edit_super_bowl_path(@super_bowl) %> |
+<%= link_to 'Back', super_bowls_path %>

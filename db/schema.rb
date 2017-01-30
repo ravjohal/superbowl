@@ -10,10 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170130011948) do
+ActiveRecord::Schema.define(version: 20170130092456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "super_bowl_id"
+    t.integer  "question_id"
+  end
+
+  create_table "prop_bet_sheets", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "totals_points"
+    t.boolean  "paid"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "user_id"
+    t.integer  "super_bowl_id"
+  end
+
+  create_table "prop_bets", force: :cascade do |t|
+    t.integer  "question_id"
+    t.integer  "answer_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "prop_bet_sheet_id"
+    t.integer  "user_id"
+    t.integer  "super_bowl_id"
+    t.index ["answer_id"], name: "index_prop_bets_on_answer_id", using: :btree
+    t.index ["question_id"], name: "index_prop_bets_on_question_id", using: :btree
+  end
 
   create_table "propbetsheets", force: :cascade do |t|
     t.string   "name"
@@ -22,6 +52,22 @@ ActiveRecord::Schema.define(version: 20170130011948) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "user_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.text     "question"
+    t.integer  "weight"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "super_bowl_id"
+  end
+
+  create_table "super_bowls", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "year"
+    t.integer  "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,4 +89,6 @@ ActiveRecord::Schema.define(version: 20170130011948) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "prop_bets", "answers"
+  add_foreign_key "prop_bets", "questions"
 end

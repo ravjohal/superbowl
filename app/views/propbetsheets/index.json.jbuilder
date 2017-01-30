@@ -1,1 +1,0 @@
-json.array! @propbetsheets, partial: 'propbetsheets/propbetsheet', as: :propbetsheet
