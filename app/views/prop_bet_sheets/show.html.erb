@@ -37,7 +37,9 @@
 		  		<td><%= prop_bet.question.question %> </td>
 				<td><%= prop_bet.question.weight %> </td>
 				<td><%= prop_bet.answer.try(:name) %> </td>
-				<td><%= prop_bet.question.try(:correct_answer).name %> </td>
+				<% if false %>
+					<td><%= prop_bet.question.try(:correct_answer).name %> </td>
+				<% end %>
 		    </tr>
 		    <% end %>
 		  </tbody>
