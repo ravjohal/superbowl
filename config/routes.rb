@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+  resources :users
   resources :prop_bet_sheets
   resources :super_bowls
   resources :answers
@@ -10,8 +12,7 @@ authenticated :user do
 end
 
   root :to => 'visitors#index'
-  devise_for :users
-  resources :users
+  
 
   get '/pastwinners' => 'users#past_winners', as: :past_winners
 end
