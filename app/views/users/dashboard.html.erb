@@ -1,4 +1,5 @@
 <% if @prop_bet_sheet %>
-<p> <%= link_to "Go to your Prop Bet Sheet", show_prop_bet_sheet_path(@prop_bet_sheet) %> </p>
-<% end %>
+<p> <%= link_to "Edit your Prop Bet Sheet", edit_prop_bet_sheet_path(@prop_bet_sheet) %> </p>
+<% else %>
 <p> <%= link_to 'Create a NEW Prop Bet Sheet', new_prop_bet_sheet_path %> </p>
+<% end %>

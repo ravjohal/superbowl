@@ -1,0 +1,2 @@
+module PropBetsHelper
+end

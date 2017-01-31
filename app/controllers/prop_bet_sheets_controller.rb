@@ -4,7 +4,7 @@ class PropBetSheetsController < ApplicationController
   # GET /prop_bet_sheets
   # GET /prop_bet_sheets.json
   def index
-    @prop_bet_sheets = PropBetSheet.all
+    @prop_bet_sheets = PropBetSheet.where(:user_id => current_user.id)
   end
 
   # GET /prop_bet_sheets/1

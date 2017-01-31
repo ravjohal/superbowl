@@ -1,0 +1,17 @@
+<%= form_for(prop_bet) do |f| %>
+  <% if prop_bet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(prop_bet.errors.count, "error") %> prohibited this prop_bet from being saved:</h2>
+
+      <ul>
+      <% prop_bet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

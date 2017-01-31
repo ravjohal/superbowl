@@ -1,0 +1,1 @@
+json.partial! "prop_bets/prop_bet", prop_bet: @prop_bet

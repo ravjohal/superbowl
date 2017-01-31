@@ -11,7 +11,11 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
- 	user_root_path
+ 	  if current_user.prop_bet_sheet
+      prop_bet_sheets_path
+    else
+      user_root_path
+    end
   end
 
   def set_super_bowl

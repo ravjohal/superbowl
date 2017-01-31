@@ -6,8 +6,13 @@
 </p>
 
 <p>
-  <strong>Totals points:</strong>
-  <%= @prop_bet_sheet.totals_points %>
+  <strong>Totals Points Earned:</strong>
+  <%= @prop_bet_sheet.total_earned_calculated %>
+</p>
+
+<p>
+  <strong>Totals Points:</strong>
+  <%= @prop_bet_sheet.total_points_calculated %>
 </p>
 
 <p>
@@ -22,6 +27,7 @@
 		      <th>Question</th>
 		      <th>Points</th>
 		      <th>Your Answer</th>
+		      <th>Correct Answer</th>
 		    </tr>
 		  </thead>
 
@@ -30,7 +36,8 @@
 		  	<tr>
 		  		<td><%= prop_bet.question.question %> </td>
 				<td><%= prop_bet.question.weight %> </td>
-				<td><%= prop_bet.answer.name %> </td>
+				<td><%= prop_bet.answer.try(:name) %> </td>
+				<td><%= prop_bet.question.try(:correct_answer).name %> </td>
 		    </tr>
 		    <% end %>
 		  </tbody>

@@ -11,4 +11,22 @@ class PropBetSheet < ApplicationRecord
             :allow_destroy => true
     
     validates_presence_of :name
+
+    def total_points_calculated
+    	total_points = 0
+    	self.prop_bets.each do |prop_bet|
+    		total_points += prop_bet.question.weight
+    	end
+    	total_points
+    end
+
+    def total_earned_calculated
+    	total_points = 0
+    	self.prop_bets.each do |prop_bet|
+    		if prop_bet.answer == prop_bet.question.correct_answer
+    			total_points += prop_bet.question.weight
+    		end
+    	end
+    	total_points
+    end
 end

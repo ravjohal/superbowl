@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Prop Bets</h1>
+
+<div>
+  <table class="table"> 
+    <thead>
+        <tr>
+          <th>Question</th>
+          <th>Points</th>
+          <th>Your Answer</th>
+          <th>Correct Answer</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @prop_bets.order(:id).each do |prop_bet| %>
+        <tr>
+          <td><%= prop_bet.question.question %> </td>
+        <td><%= prop_bet.question.weight %> </td>
+        <td><%= prop_bet.answer.try(:name) %> </td>
+        <td><%= prop_bet.correct_answer.try(:name) %> </td>
+        </tr>
+        <% end %>
+      </tbody>
+  </table>
+</div>
+
+<br>
+
+<%= link_to 'New Prop Bet', new_prop_bet_path %>

@@ -22,8 +22,12 @@
   </div>
 
   <div class="field">
-    <%= f.association :options, :include_blank => false %>
+    <%= f.association :answers, :include_blank => false %>
   </div>
+
+  <div class="field">
+    <%= f.association :correct_answer, :include_blank => false %>
+  </div>  
 
   <div class="actions">
     <%= f.submit %>

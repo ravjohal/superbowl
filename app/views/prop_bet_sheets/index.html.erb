@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Prop Bet Sheets</h1>
+<h1>Prop Bet Sheet</h1>
 
 <table class="table">
   <thead>
@@ -28,4 +28,6 @@
 
 <br>
 
-<%= link_to 'New Prop Bet Sheet', new_prop_bet_sheet_path %>
+<% if @prop_bet_sheets.count == 0 %>
+  <%= link_to 'Create New Prop Bet Sheet', new_prop_bet_sheet_path %>
+<% end %>

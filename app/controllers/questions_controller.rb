@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.all
+    @questions = Question.where(:super_bowl_id => @current_super_bowl_id)
   end
 
   # GET /questions/1
@@ -70,6 +70,6 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:question, :weight, :super_bowl_id, :option_ids => [], :options_attributes => [:id, :name])
+      params.require(:question).permit(:question, :weight, :super_bowl_id, :correct_answer_id, :correct_answer_attributes => [:id, :name], :options_ids => [], :answer_ids => [], :options_attributes => [:id, :name])
     end
 end
