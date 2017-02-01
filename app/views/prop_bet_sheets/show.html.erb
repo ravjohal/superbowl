@@ -17,7 +17,7 @@
 
 <p>
   <strong>Paid:</strong>
-  <%= @prop_bet_sheet.paid %>
+  <%= check_box_tag 'admin', '1', @prop_bet_sheet.paid , :disabled => true, :label => false %>
 </p>
 
 <div>

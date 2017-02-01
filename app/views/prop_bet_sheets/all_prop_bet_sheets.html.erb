@@ -19,7 +19,7 @@
         <td><%= prop_bet_sheet.name %></td>
         <td><%= prop_bet_sheet.total_earned_calculated %></td>
         <td><%= prop_bet_sheet.total_points_calculated %></td>
-        <td><%= prop_bet_sheet.paid %></td>
+        <td><%= check_box_tag 'admin', '1', prop_bet_sheet.paid , :disabled => true, :label => false %></td>
       </tr>
     <% end %>
   </tbody>
