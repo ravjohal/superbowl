@@ -36,7 +36,7 @@
             <%= pb.input :user_id, :as => :hidden, :input_html => { :value => current_user.id} %>
 
             
-              <td><%= pb.input :question, label: false, as: :text, disabled: true, :input_html => { :value => pb.object.question.question } %></td>
+              <td><%= pb.input :question, label: false, as: :text, disabled: true, :input_html => { :value => pb.object.question.question , :rows => 3 } %></td>
               <td><%= pb.input :weight, label: false, disabled: true, :input_html => { :value => pb.object.question.weight }  %></td>
               <td><%= pb.association :answer, label: false, :collection => pb.object.question.answers, :input_html => { :multiple => false } %></td>
           </tr>
