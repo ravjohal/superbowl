@@ -8,6 +8,10 @@ class PropBetSheetsController < ApplicationController
     @prop_bet_sheets = PropBetSheet.where(:user_id => current_user.id)
   end
 
+  def all_prop_bet_sheets
+    @prop_bet_sheets = PropBetSheet.all
+  end
+
   # GET /prop_bet_sheets/1
   # GET /prop_bet_sheets/1.json
   def show

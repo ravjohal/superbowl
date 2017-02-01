@@ -15,6 +15,6 @@ end
 
   root :to => 'visitors#index'
   
-
+  get '/all_prop_bet_sheets' => 'prop_bet_sheets#all_prop_bet_sheets', as: :all_prop_bet_sheets
   get '/pastwinners' => 'users#past_winners', as: :past_winners
 end
