@@ -11,7 +11,7 @@ class PropBetSheetsController < ApplicationController
   # GET /prop_bet_sheets/1
   # GET /prop_bet_sheets/1.json
   def show
-    unless current_user.id == @prop_bet_sheet.user_id
+    unless current_user.id == @prop_bet_sheet.user_id || current_user.role == 1
       redirect_to root_path, :alert => "Access denied."
     end
   end

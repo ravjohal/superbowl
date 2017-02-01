@@ -6,7 +6,8 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Totals points</th>
+      <th>Totals Points Earned</th>
+      <th>Totals Points</th>
       <th>Paid</th>
       <th colspan="3"></th>
     </tr>
@@ -16,7 +17,8 @@
     <% @prop_bet_sheets.each do |prop_bet_sheet| %>
       <tr>
         <td><%= prop_bet_sheet.name %></td>
-        <td><%= prop_bet_sheet.totals_points %></td>
+        <td><%= prop_bet_sheet.total_earned_calculated %></td>
+        <td><%= prop_bet_sheet.total_points_calculated %></td>
         <td><%= prop_bet_sheet.paid %></td>
         <td><%= link_to 'Show', prop_bet_sheet %></td>
         <td><%= link_to 'Edit', edit_prop_bet_sheet_path(prop_bet_sheet) %></td>
