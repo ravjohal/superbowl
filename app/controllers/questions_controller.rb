@@ -1,24 +1,38 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /questions
   # GET /questions.json
   def index
     @questions = Question.where(:super_bowl_id => @current_super_bowl_id)
+
+    unless current_user.role == 1
+      redirect_to root_path, :alert => "Access denied."
+    end
   end
 
   # GET /questions/1
   # GET /questions/1.json
   def show
+    unless current_user.role == 1
+      redirect_to root_path, :alert => "Access denied."
+    end
   end
 
   # GET /questions/new
   def new
     @question = Question.new
+    unless current_user.role == 1
+      redirect_to root_path, :alert => "Access denied."
+    end
   end
 
   # GET /questions/1/edit
   def edit
+    unless current_user.role == 1
+      redirect_to root_path, :alert => "Access denied."
+    end
   end
 
   # POST /questions

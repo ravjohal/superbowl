@@ -1,24 +1,37 @@
 class PropBetsController < ApplicationController
   before_action :set_prop_bet, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /prop_bets
   # GET /prop_bets.json
   def index
     @prop_bets = PropBet.all
+    unless current_user.role == 1
+      redirect_to root_path, :alert => "Access denied."
+    end
   end
 
   # GET /prop_bets/1
   # GET /prop_bets/1.json
   def show
+    unless current_user.role == 1
+      redirect_to root_path, :alert => "Access denied."
+    end
   end
 
   # GET /prop_bets/new
   def new
     @prop_bet = PropBet.new
+    unless current_user.role == 1
+      redirect_to root_path, :alert => "Access denied."
+    end
   end
 
   # GET /prop_bets/1/edit
   def edit
+    unless current_user.role == 1
+      redirect_to root_path, :alert => "Access denied."
+    end
   end
 
   # POST /prop_bets

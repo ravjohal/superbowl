@@ -1,24 +1,37 @@
 class SuperBowlsController < ApplicationController
   before_action :set_super_bowl, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /super_bowls
   # GET /super_bowls.json
   def index
     @super_bowls = SuperBowl.all
+    unless current_user.role == 1
+      redirect_to root_path, :alert => "Access denied."
+    end
   end
 
   # GET /super_bowls/1
   # GET /super_bowls/1.json
   def show
+    unless current_user.role == 1
+      redirect_to root_path, :alert => "Access denied."
+    end
   end
 
   # GET /super_bowls/new
   def new
     @super_bowl = SuperBowl.new
+    unless current_user.role == 1
+      redirect_to root_path, :alert => "Access denied."
+    end
   end
 
   # GET /super_bowls/1/edit
   def edit
+    unless current_user.role == 1
+      redirect_to root_path, :alert => "Access denied."
+    end
   end
 
   # POST /super_bowls

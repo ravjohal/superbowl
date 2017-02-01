@@ -1,5 +1,6 @@
 class PropBetSheetsController < ApplicationController
   before_action :set_prop_bet_sheet, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /prop_bet_sheets
   # GET /prop_bet_sheets.json
@@ -10,6 +11,9 @@ class PropBetSheetsController < ApplicationController
   # GET /prop_bet_sheets/1
   # GET /prop_bet_sheets/1.json
   def show
+    unless current_user.id == @prop_bet_sheet.user_id
+      redirect_to root_path, :alert => "Access denied."
+    end
   end
 
   # GET /prop_bet_sheets/new
@@ -20,9 +24,13 @@ class PropBetSheetsController < ApplicationController
     @questions.each do |question|
       @prop_bet_sheet.prop_bets.build(:question => question)
     end
-
-    puts "I AM INSIDE PROP BET SHEET >>> " + @prop_bet_sheet.prop_bets.inspect
     @prop_bets = @prop_bet_sheet.prop_bets
+
+    @prop_bet_sheets = PropBetSheet.where(:user_id => current_user.id)
+
+    if @prop_bet_sheets.count == 1
+      redirect_to root_path, :alert => "Cannot create more than one."
+    end
   end
 
   # GET /prop_bet_sheets/1/edit
@@ -30,13 +38,14 @@ class PropBetSheetsController < ApplicationController
     @questions = Question.where(:super_bowl_id => @current_super_bowl_id)
     # @question_count = @quetions.count
     @prop_bets = @prop_bet_sheet.prop_bets.order(:id)
+    unless current_user.id == @prop_bet_sheet.user_id
+      redirect_to root_path, :alert => "Access denied."
+    end
   end
 
   # POST /prop_bet_sheets
   # POST /prop_bet_sheets.json
   def create
-    puts "PROP SHEET >>>>>>> " + prop_bet_sheet_params.inspect
-
     # prop_bet_array = nil
     # prop_bet_sheet_params[:prop_bets_attributes].each do |prop_bet|
     #   puts "prop bet > >>>>>> " + prop_bet[:question_attributes][:id]

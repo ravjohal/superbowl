@@ -1,24 +1,37 @@
 class AnswersController < ApplicationController
   before_action :set_answer, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /answers
   # GET /answers.json
   def index
     @answers = Answer.all
+    unless current_user.role == 1
+      redirect_to root_path, :alert => "Access denied."
+    end
   end
 
   # GET /answers/1
   # GET /answers/1.json
   def show
+    unless current_user.role == 1
+      redirect_to root_path, :alert => "Access denied."
+    end
   end
 
   # GET /answers/new
   def new
     @answer = Answer.new
+    unless current_user.role == 1
+      redirect_to root_path, :alert => "Access denied."
+    end
   end
 
   # GET /answers/1/edit
   def edit
+    unless current_user.role == 1
+      redirect_to root_path, :alert => "Access denied."
+    end
   end
 
   # POST /answers
