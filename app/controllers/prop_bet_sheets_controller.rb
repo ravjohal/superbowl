@@ -9,7 +9,9 @@ class PropBetSheetsController < ApplicationController
   end
 
   def all_prop_bet_sheets
-    @prop_bet_sheets = PropBetSheet.all
+    @prop_bet_sheets = PropBetSheet.sorted_by_total_earned
+
+    puts "PROP BET SHEETS " + @prop_bet_sheets.inspect
   end
 
   # GET /prop_bet_sheets/1
