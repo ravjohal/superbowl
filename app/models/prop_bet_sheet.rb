@@ -33,4 +33,9 @@ class PropBetSheet < ApplicationRecord
     def self.sorted_by_total_earned
       PropBetSheet.all.sort_by(&:total_earned_calculated).reverse
     end
+
+    def self.pot
+        count = PropBetSheet.where(:paid => true).count
+        count*20
+    end
 end
