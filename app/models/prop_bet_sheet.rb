@@ -30,6 +30,11 @@ class PropBetSheet < ApplicationRecord
     	total_points
     end
 
+    def readonly?
+  # allow the creation, you can also use a more complex condition to allow updates under certain conditions
+        new_record? ? false : true 
+    end
+
     def self.sorted_by_total_earned
       PropBetSheet.all.sort_by(&:total_earned_calculated).reverse
     end

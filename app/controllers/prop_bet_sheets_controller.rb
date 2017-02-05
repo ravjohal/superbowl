@@ -1,6 +1,7 @@
 class PropBetSheetsController < ApplicationController
   before_action :set_prop_bet_sheet, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :redirect_user, only: [:new, :edit,:destroy]
 
   # GET /prop_bet_sheets
   # GET /prop_bet_sheets.json
@@ -98,6 +99,10 @@ class PropBetSheetsController < ApplicationController
       format.html { redirect_to prop_bet_sheets_url, notice: 'Prop bet sheet was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def redirect_user
+    redirect_to root_path
   end
 
   private
