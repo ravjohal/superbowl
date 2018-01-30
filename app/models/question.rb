@@ -10,4 +10,7 @@ class Question < ApplicationRecord
 
 	accepts_nested_attributes_for :options,
             :allow_destroy => true
+
+    scope :by_super_bowl, -> (super_bowl) { where(:super_bowl => super_bowl) }
+   
 end
