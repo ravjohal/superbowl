@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_super_bowl
-  	@super_bowl = SuperBowl.first
+  	@super_bowl = SuperBowl.last
     @current_super_bowl_id = @super_bowl.id
   end
 end

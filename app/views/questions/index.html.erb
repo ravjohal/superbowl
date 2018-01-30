@@ -12,7 +12,7 @@
   </thead>
 
   <tbody>
-    <% @questions.by_super_bowl(SuperBowl.last).each do |question| %>
+    <% @questions.each do |question| %>
       <tr>
         <td><%= question.question %></td>
         <td><%= question.weight %></td>

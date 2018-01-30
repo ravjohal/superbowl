@@ -5,7 +5,7 @@ class AnswersController < ApplicationController
   # GET /answers
   # GET /answers.json
   def index
-    @answers = Answer.all
+    @answers = Answer.by_super_bowl(@super_bowl)
     unless current_user.role == 1
       redirect_to root_path, :alert => "Access denied."
     end
