@@ -12,6 +12,14 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def all_questions
+    @questions = Question.all
+
+    unless current_user.role == 1
+      redirect_to root_path, :alert => "Access denied."
+    end
+  end
+
   # GET /questions/1
   # GET /questions/1.json
   def show
