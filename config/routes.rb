@@ -18,4 +18,5 @@ end
   get '/all_prop_bet_sheets' => 'prop_bet_sheets#all_prop_bet_sheets', as: :all_prop_bet_sheets
   get '/pastwinners' => 'users#past_winners', as: :past_winners
   get '/all_questions' => 'questions#all_questions', as: :all_questions
+  get '/all_answers' => 'answers#all_answers', as: :all_answers
 end
