@@ -22,11 +22,11 @@
   </div>
 
   <div class="field">
-    <%= f.association :answers, :include_blank => false %>
+    <%= f.association :answers, :collection => @answer_list, :include_blank => false %>
   </div>
 
   <div class="field">
-    <%= f.association :correct_answer, :include_blank => false %>
+    <%= f.association :correct_answer, :collection => @answer_list, :include_blank => false %>
   </div>  
 
   <div class="actions">

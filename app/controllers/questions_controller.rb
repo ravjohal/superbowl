@@ -31,6 +31,9 @@ class QuestionsController < ApplicationController
   # GET /questions/new
   def new
     @question = Question.new
+
+    @answer_list = Answer.by_super_bowl(@super_bowl)
+    
     unless current_user.role == 1
       redirect_to root_path, :alert => "Access denied."
     end
