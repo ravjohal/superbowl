@@ -51,7 +51,8 @@ class PropBetSheet < ApplicationRecord
     end
 
     def self.pot
-        count = PropBetSheet.by_latest_super_bowl.where(:paid => true).count
+        count = PropBetSheet.by_latest_super_bowl(SuperBowl.last).where(:paid => true).count
+        puts "PropBetSheet count: " + PropBetSheet.by_latest_super_bowl(SuperBowl.last).where(:paid => true).count.to_s
         count*20
     end
 end
