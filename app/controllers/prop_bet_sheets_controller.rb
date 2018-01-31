@@ -10,7 +10,7 @@ class PropBetSheetsController < ApplicationController
   end
 
   def all_prop_bet_sheets
-    @prop_bet_sheets = PropBetSheet.sorted_by_total_earned
+    @prop_bet_sheets = PropBetSheet.where(:super_bowl_id => SuperBowl.last.id).sorted_by_total_earned
 
    # puts "PROP BET SHEETS " + @prop_bet_sheets.inspect
   end
