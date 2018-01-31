@@ -12,7 +12,7 @@ class PropBetSheetsController < ApplicationController
   def all_prop_bet_sheets
     @prop_bet_sheets = PropBetSheet.sorted_by_total_earned
 
-    puts "PROP BET SHEETS " + @prop_bet_sheets.inspect
+   # puts "PROP BET SHEETS " + @prop_bet_sheets.inspect
   end
 
   # GET /prop_bet_sheets/1
@@ -35,9 +35,9 @@ class PropBetSheetsController < ApplicationController
 
     @prop_bet_sheets = PropBetSheet.where(:user_id => current_user.id)
 
-    if @prop_bet_sheets.count == 1
-      redirect_to root_path, :alert => "Cannot create more than one."
-    end
+    # if @prop_bet_sheets.count == 1
+    #   redirect_to root_path, :alert => "Cannot create more than one."
+    # end
   end
 
   # GET /prop_bet_sheets/1/edit

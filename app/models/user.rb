@@ -4,6 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_one :prop_bet_sheet
+  has_many :prop_bet_sheets
   has_many :prop_bets
 end

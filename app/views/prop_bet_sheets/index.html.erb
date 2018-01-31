@@ -9,6 +9,7 @@
       <th>Totals Points Earned</th>
       <th>Totals Points</th>
       <th>Paid</th>
+      <th>Super Bowl</th>      
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,6 +20,7 @@
         <td><%= prop_bet_sheet.name %></td>
         <td><%= prop_bet_sheet.total_earned_calculated %></td>
         <td><%= prop_bet_sheet.total_points_calculated %></td>
+        <td><%= prop_bet_sheet.super_bowl.name %></td>
         <td><%= check_box_tag 'admin', '1', prop_bet_sheet.paid , :disabled => true, :label => false %></td>
         <td><%= link_to 'Show', prop_bet_sheet %></td>
         <td><%= link_to 'Edit', edit_prop_bet_sheet_path(prop_bet_sheet) %></td>
@@ -30,6 +32,4 @@
 
 <br>
 
-<% if @prop_bet_sheets.count == 0 %>
-  <%= link_to 'Create New Prop Bet Sheet', new_prop_bet_sheet_path %>
-<% end %>
+<%= link_to 'Create New Prop Bet Sheet', new_prop_bet_sheet_path %>

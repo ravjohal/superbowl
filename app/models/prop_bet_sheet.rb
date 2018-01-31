@@ -12,6 +12,14 @@ class PropBetSheet < ApplicationRecord
     
     validates_presence_of :name
 
+    validate :prop_bet_sheet_count_within_limit, :on => :create
+
+    def prop_bet_sheet_count_within_limit
+        if self.user.prop_bet_sheets.where(:super_bowl_id => SuperBowl.last.id).count > 1
+          errors.add(:base, "YOU CAN ONLY CREATE 1 Prop Bet Sheet!!!")
+        end
+    end
+
     def total_points_calculated
     	total_points = 0
     	self.prop_bets.each do |prop_bet|
@@ -30,10 +38,10 @@ class PropBetSheet < ApplicationRecord
     	total_points
     end
 
-    def readonly?
-  # allow the creation, you can also use a more complex condition to allow updates under certain conditions
-        new_record? ? false : true 
-    end
+  #   def readonly?
+  # # allow the creation, you can also use a more complex condition to allow updates under certain conditions
+  #       new_record? ? false : true 
+  #   end
 
     def self.sorted_by_total_earned
       PropBetSheet.all.sort_by(&:total_earned_calculated).reverse
