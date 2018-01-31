@@ -14,8 +14,11 @@ class PropBetSheet < ApplicationRecord
 
     validate :prop_bet_sheet_count_within_limit, :on => :create
 
+    scope :by_latest_super_bowl, -> (super_bowl) { where(:super_bowl => super_bowl) }
+
     def prop_bet_sheet_count_within_limit
-        if self.user.prop_bet_sheets.where(:super_bowl_id => SuperBowl.last.id).count > 1
+        puts "what is this count: " + self.user.prop_bet_sheets.by_latest_super_bowl(SuperBowl.last).count.to_s
+        if self.user.prop_bet_sheets.by_latest_super_bowl(SuperBowl.last).count >= 1
           errors.add(:base, "YOU CAN ONLY CREATE 1 Prop Bet Sheet!!!")
         end
     end
@@ -48,7 +51,7 @@ class PropBetSheet < ApplicationRecord
     end
 
     def self.pot
-        count = PropBetSheet.where(:paid => true).count
+        count = PropBetSheet.by_latest_super_bowl.where(:paid => true).count
         count*20
     end
 end
