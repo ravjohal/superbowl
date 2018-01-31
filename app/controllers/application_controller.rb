@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
- 	  if current_user.prop_bet_sheet
+ 	  if current_user.prop_bet_sheets
       prop_bet_sheets_path
     else
       user_root_path
