@@ -16,6 +16,13 @@
     <%= f.text_field :name %>
   </div>
 
+<% if current_user.role == 1 %>
+  <div class="field">
+    <%= f.label 'Paid' %>
+    <%= f.check_box :paid %>
+  </div>
+<% end %>
+
 <!-- Questions and Answers -->
   <div>
     <table class="table">

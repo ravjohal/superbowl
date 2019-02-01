@@ -46,7 +46,7 @@ class PropBetSheetsController < ApplicationController
     @questions = Question.where(:super_bowl_id => @current_super_bowl_id)
     # @question_count = @quetions.count
     @prop_bets = @prop_bet_sheet.prop_bets.order(:id)
-    unless current_user.id == @prop_bet_sheet.user_id
+    unless (current_user.id == @prop_bet_sheet.user_id) or (current_user.role == 1)
       redirect_to root_path, :alert => "Access denied."
     end
   end
