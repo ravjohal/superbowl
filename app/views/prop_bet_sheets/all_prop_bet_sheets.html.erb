@@ -20,6 +20,9 @@
         <td><%= prop_bet_sheet.total_earned_calculated %></td>
         <td><%= prop_bet_sheet.total_points_calculated %></td>
         <td><%= check_box_tag 'admin', '1', prop_bet_sheet.paid , :disabled => true, :label => false %></td>
+        <% if current_user.role == 1 %>
+          <td><%= link_to 'Edit', edit_prop_bet_sheet_path(prop_bet_sheet) %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
