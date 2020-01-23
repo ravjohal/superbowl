@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
 end
 ruby '2.4.0'
 gem 'rails', '~> 5.0.1'
-gem 'puma', '~> 3.0'
+gem "puma", ">= 3.12.2"
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
@@ -14,7 +14,12 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'cocoon'
 gem 'pg', '~> 0.20'
-gem 'simple_form'
+gem "simple_form", ">= 5.0.0"
+gem "rubyzip", ">= 1.3.0"
+gem "nokogiri", ">= 1.10.4"
+gem "actionview", ">= 5.0.7.2"
+gem "rack", ">= 2.0.8"
+gem "loofah", ">= 2.3.1"
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
@@ -31,8 +36,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'bootstrap', '~> 4.0.0.alpha3.1'
-gem 'devise'
+gem "bootstrap", ">= 4.3.1"
+gem "devise", ">= 4.7.1"
 gem 'high_voltage'
 
 group :development do
