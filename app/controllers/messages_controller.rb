@@ -69,6 +69,6 @@ class MessagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
-      params.require(:message).permit(:header_update, :header_details, :header_pot)
+      params.require(:message).permit(:header_update, :header_details, :header_first, :header_second, :header_third, :header_pot_title, :header_middle, :header_left, :footer)
     end
 end

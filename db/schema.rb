@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200129071913) do
+ActiveRecord::Schema.define(version: 20200129073325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,9 +25,15 @@ ActiveRecord::Schema.define(version: 20200129071913) do
   create_table "messages", force: :cascade do |t|
     t.text     "header_update"
     t.text     "header_details"
-    t.text     "header_pot"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "header_first"
+    t.string   "header_second"
+    t.string   "header_third"
+    t.string   "header_pot_title"
+    t.text     "header_middle"
+    t.text     "header_left"
+    t.text     "footer"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "options", force: :cascade do |t|
