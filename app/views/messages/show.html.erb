@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Header update:</strong>
+  <%= @message.header_update %>
+</p>
+
+<p>
+  <strong>Header details:</strong>
+  <%= @message.header_details %>
+</p>
+
+<p>
+  <strong>Header pot:</strong>
+  <%= @message.header_pot %>
+</p>
+
+<%= link_to 'Edit', edit_message_path(@message) %> |
+<%= link_to 'Back', messages_path %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170131043115) do
+ActiveRecord::Schema.define(version: 20200129071913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 20170131043115) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "super_bowl_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text     "header_update"
+    t.text     "header_details"
+    t.text     "header_pot"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "options", force: :cascade do |t|
