@@ -6,6 +6,10 @@ class QuestionsController < ApplicationController
   # GET /questions.json
   def index
     @questions = Question.where(:super_bowl_id => @current_super_bowl_id)
+    @total_weight = 0
+    @questions.each do |q|
+      @total_weight += q.weight
+    end
 
     unless current_user.role == 1
       redirect_to root_path, :alert => "Access denied."
