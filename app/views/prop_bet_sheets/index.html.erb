@@ -23,10 +23,8 @@
         <td><%= prop_bet_sheet.super_bowl.name %></td>
         <td><%= check_box_tag 'admin', '1', prop_bet_sheet.paid , :disabled => true, :label => false %></td>
         <td><%= link_to 'Show', prop_bet_sheet %></td>
-        <% if !prop_bet_sheet.paid %>
-          <td><%= link_to 'Edit', edit_prop_bet_sheet_path(prop_bet_sheet) %></td>
-          <td><%= link_to 'Destroy', prop_bet_sheet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
+        <td><%= link_to 'Edit', edit_prop_bet_sheet_path(prop_bet_sheet) %></td>
+        <td><%= link_to 'Destroy', prop_bet_sheet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
