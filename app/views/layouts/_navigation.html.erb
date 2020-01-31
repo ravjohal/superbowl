@@ -14,8 +14,9 @@
       </li>
 
   <% if user_signed_in? %>
+  <li class='nav-item'><%= link_to "All Super Bowl #{@super_bowl.number} Sheets", all_prop_bet_sheets_path, class: 'nav-link' %></li>
+  <li class='nav-item'><%= link_to 'All My Sheets (past and current)', prop_bet_sheets_path, class: 'nav-link' %></li>
   <li class='nav-item'><%= link_to 'Past Winners', past_winners_path, class: 'nav-link' %></li>
-  <li class='nav-item'><%= link_to 'All Prop Bet Sheets', all_prop_bet_sheets_path, class: 'nav-link' %></li>
   <li class='nav-item'><%= link_to 'Edit account', edit_user_registration_path, class: 'nav-link' %></li>
   <li class='nav-item'><%= link_to 'Sign out', destroy_user_session_path, :method => :delete, class: 'nav-link' %></li>
 <% else %>
@@ -33,7 +34,7 @@
 
 <div style="background-color:lightblue">
 Click on: <%= link_to 'My Current Prop Sheet', root_path %> to go to your Current Sheet for Super Bowl <%= @super_bowl.number %> (make sure you are signed in).
-<br/> Check out <%= link_to 'All Prop Sheets', all_prop_bet_sheets_path %> page, it will be updated and sorted throughout the game.  
+<br/> Check out <%= link_to "All Super Bowl #{@super_bowl.number} Sheets", all_prop_bet_sheets_path %> page, it will be updated and sorted throughout the game.  
 <br/> <b> $20 </b> to play (paypal: <b> ravneetjohal@gmail.com </b>, venmo: <b> @rav-johal </b>). Issues? email me: ravneetjohal@gmail.com
 <br />
 <br />
