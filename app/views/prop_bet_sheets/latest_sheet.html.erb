@@ -1,0 +1,52 @@
+<h1> My Sheet for Super Bowl <%= @super_bowl.number %> - Year <%= @super_bowl.year %> </h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>My Name:</strong>
+  <%= @prop_bet_sheet.name %>
+</p>
+
+<p>
+  <strong>Totals Points Earned:</strong>
+  <%= @prop_bet_sheet.total_earned_calculated %>
+</p>
+
+<p>
+  <strong>Totals Points:</strong>
+  <%= @prop_bet_sheet.total_points_calculated %>
+</p>
+
+<p>
+  <strong>Paid:</strong>
+  <%= check_box_tag 'admin', '1', @prop_bet_sheet.paid , :disabled => true, :label => false %>
+</p>
+
+<div>
+	<table class="table"> 
+		<thead>
+		    <tr>
+		      <th>Question</th>
+		      <th>Points</th>
+		      <th>Your Answer</th>
+		      <th>Correct Answer</th>
+		    </tr>
+		  </thead>
+
+		  <tbody>
+		  	<% @prop_bet_sheet.prop_bets.order(:id).each do |prop_bet| %>
+		  	<tr>
+		  		<td><%= prop_bet.question.question %> </td>
+				<td><%= prop_bet.question.weight %> </td>
+				<td><%= prop_bet.answer.try(:name) %> </td>
+				<% if prop_bet.question.try(:correct_answer).name != "Heads" %>
+					<td><%= prop_bet.question.try(:correct_answer).name %> </td>
+				<% end %>
+		    </tr>
+		    <% end %>
+		  </tbody>
+	</table>
+</div>
+
+<%= link_to 'Edit', edit_prop_bet_sheet_path(@prop_bet_sheet) %> |
+<%= link_to 'Back', prop_bet_sheets_path %>

@@ -10,6 +10,13 @@ class PropBetSheetsController < ApplicationController
     @prop_bet_sheets = PropBetSheet.where(:user_id => current_user.id)
   end
 
+  def latest_sheet
+    @prop_bet_sheet = PropBetSheet.find_by super_bowl_id: @current_super_bowl_id, user_id: current_user.id
+    if !@prop_bet_sheet
+      redirect_to new_prop_bet_sheet_path
+    end
+  end
+
   def all_prop_bet_sheets
     @prop_bet_sheets = PropBetSheet.where(:super_bowl_id => SuperBowl.last.id).sorted_by_total_earned
 

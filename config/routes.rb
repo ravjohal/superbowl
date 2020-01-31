@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :questions
   resources :prop_bets
 authenticated :user do
-  root :to => 'prop_bet_sheets#index', as: :user_root
+  root :to => 'prop_bet_sheets#latest_sheet', as: :user_root
 end
 
   root :to => 'visitors#index'
