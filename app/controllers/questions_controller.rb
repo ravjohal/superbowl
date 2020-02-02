@@ -46,7 +46,8 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/edit
   def edit
-    @answer_list = Answer.by_super_bowl(@super_bowl)
+     # @answer_list = Answer.by_super_bowl(@super_bowl)
+    @answer_list = Answer.all
     unless current_user.role == 1
       redirect_to root_path, :alert => "Access denied."
     end
