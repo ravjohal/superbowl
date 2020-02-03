@@ -30,14 +30,12 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_user_deadline
-    if current_user.email != "parmarram@yahoo.com"
-      time_zone = 'Pacific Time (US & Canada)'
-      Time.zone = time_zone
-      sub = Time.zone.parse("2020-02-02 15:20")
-      Rails.logger.info("time now " + Time.now.strftime("%m/%d/%y %I:%M %p") + "    Time COMPARING: "  + sub.strftime("%m/%d/%y %I:%M %p"))
-      if Time.now > sub
-        redirect_to root_path
-      end
+    time_zone = 'Pacific Time (US & Canada)'
+    Time.zone = time_zone
+    sub = Time.zone.parse("2020-02-02 15:20")
+    Rails.logger.info("time now " + Time.now.strftime("%m/%d/%y %I:%M %p") + "    Time COMPARING: "  + sub.strftime("%m/%d/%y %I:%M %p"))
+    if Time.now > sub
+      redirect_to root_path
     end
   end
 end
