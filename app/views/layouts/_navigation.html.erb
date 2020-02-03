@@ -38,7 +38,7 @@ Click on: <%= link_to 'My Current Prop Sheet', root_path %> to go to your Curren
 <br/> <b> $20 </b> to play (paypal: <b> ravneetjohal@gmail.com </b>, venmo: <b> @rav-johal </b>). Issues? email me: ravneetjohal@gmail.com
 <br />
 <br />
-<div class="text-danger"> <%= Message.first.header_update %></div>
+<div class="text-danger"> <%= h(Message.first.header_update).gsub(/\n/, '<br/>').html_safe %></div>
 </div>
 
 
