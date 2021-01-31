@@ -2,7 +2,7 @@ class PropBetSheetsController < ApplicationController
   before_action :set_prop_bet_sheet, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   # to disallow editing: 
-   before_action :redirect_user_deadline, only: [:new, :edit,:destroy, :update]
+  # before_action :redirect_user_deadline, only: [:new, :edit,:destroy, :update]
 
   # GET /prop_bet_sheets
   # GET /prop_bet_sheets.json
