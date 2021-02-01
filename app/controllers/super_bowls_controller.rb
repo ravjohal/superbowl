@@ -6,6 +6,8 @@ class SuperBowlsController < ApplicationController
   # GET /super_bowls.json
   def index
     @super_bowls = SuperBowl.all
+    # just to bypass the damn error, because it won't find super bowl id on index page
+    @super_bowl = SuperBowl.last
     unless current_user.role == 1
       redirect_to root_path, :alert => "Access denied."
     end
@@ -82,6 +84,6 @@ class SuperBowlsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def super_bowl_params
-      params.require(:super_bowl).permit(:name, :year, :number)
+      params.require(:super_bowl).permit(:name, :year, :number, :editing_enabled)
     end
 end

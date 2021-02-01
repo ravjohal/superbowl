@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'admin/setup'
   resources :messages
   devise_for :users do 
     get '/users/sign_out' => 'devise/sessions#destroy' 

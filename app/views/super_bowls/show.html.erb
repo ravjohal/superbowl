@@ -15,5 +15,10 @@
   <%= @super_bowl.number %>
 </p>
 
+<p>
+  <strong>Editing Enabled:</strong>
+  <%= @super_bowl.editing_enabled %>
+</p>
+
 <%= link_to 'Edit', edit_super_bowl_path(@super_bowl) %> |
 <%= link_to 'Back', super_bowls_path %>

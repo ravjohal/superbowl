@@ -1,7 +1,7 @@
 class PropBetSheetsController < ApplicationController
   before_action :set_prop_bet_sheet, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  # to disallow editing: 
+  # to disallow editing: NOT NEEDED ANYMORE SINCE I ADDED DATABASE FIELD NOW
   # before_action :redirect_user_deadline, only: [:new, :edit,:destroy, :update]
 
   # GET /prop_bet_sheets
@@ -110,7 +110,9 @@ class PropBetSheetsController < ApplicationController
   end
 
   def redirect_user
-    redirect_to root_path
+    if !@super_bowl.editing_enabled 
+      redirect_to root_path
+    end  
   end
 
   private
