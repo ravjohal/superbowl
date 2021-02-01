@@ -39,8 +39,10 @@
 		  		<td><%= prop_bet.question.question %> </td>
 				<td><%= prop_bet.question.weight %> </td>
 				<td><%= prop_bet.answer.try(:name) %> </td>
-				<% if prop_bet.question.try(:correct_answer).name != "Heads" %>
-					<td><%= prop_bet.question.try(:correct_answer).name %> </td>
+				<% if prop_bet.question.correct_answer %>
+					<td><%= prop_bet.question.correct_answer.name %> </td>
+				<% else %>
+					<td/>
 				<% end %>
 		    </tr>
 		    <% end %>
