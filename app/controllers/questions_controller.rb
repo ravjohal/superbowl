@@ -18,7 +18,7 @@ class QuestionsController < ApplicationController
 
   def all_questions
     @questions = Question.all
-
+    @all_super_bowls = SuperBowl.all
     unless current_user.role == 1
       redirect_to root_path, :alert => "Access denied."
     end
