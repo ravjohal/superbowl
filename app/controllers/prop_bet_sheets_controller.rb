@@ -1,13 +1,13 @@
 class PropBetSheetsController < ApplicationController
   before_action :set_prop_bet_sheet, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  # to disallow editing: NOT NEEDED ANYMORE SINCE I ADDED DATABASE FIELD NOW
+  # to disallow editing: NOT NEEDED ANYMORE SINCE I ADDED DATABASE FIELD NOW (enabling edit on Super Bowl model)
   # before_action :redirect_user_deadline, only: [:new, :edit,:destroy, :update]
 
   # GET /prop_bet_sheets
   # GET /prop_bet_sheets.json
   def index
-    @prop_bet_sheets = PropBetSheet.where(:user_id => current_user.id)
+    @prop_bet_sheets = PropBetSheet.where(:user_id => current_user.id).order("created_at DESC")
   end
 
   def latest_sheet
@@ -53,6 +53,9 @@ class PropBetSheetsController < ApplicationController
     @questions = Question.where(:super_bowl_id => @current_super_bowl_id)
     # @question_count = @quetions.count
     @prop_bets = @prop_bet_sheet.prop_bets.order(:id)
+    unless @prop_bet_sheet.super_bowl.editing_enabled
+      redirect_to root_path, :alert => "Cannot Edit Locked Sheets."
+    end
     unless (current_user.id == @prop_bet_sheet.user_id) or (current_user.role == 1)
       redirect_to root_path, :alert => "Access denied."
     end

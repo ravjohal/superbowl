@@ -12,7 +12,9 @@
 
 <p>
   <strong>Correct Answer:</strong>
-  <%= @question.correct_answer.name %>
+  <% if @question.correct_answer %>
+    <%= @question.correct_answer.name %>
+  <% end %> 
 </p>
 
 
