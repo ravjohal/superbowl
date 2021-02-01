@@ -3,8 +3,8 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-ruby '2.4.0'
-gem 'rails', '~> 5.0.1'
+ruby '2.6.6'
+gem 'rails', '~> 6.0.1'
 gem "puma", ">= 3.12.2"
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -17,7 +17,7 @@ gem 'pg', '~> 0.20'
 gem "simple_form", ">= 5.0.0"
 gem "rubyzip", ">= 1.3.0"
 gem "nokogiri", ">= 1.10.4"
-gem "actionview", ">= 5.0.7.2"
+gem "actionview", ">= 6.0.2.0"
 gem "rack", ">= 2.0.8"
 gem "loofah", ">= 2.3.1"
 
@@ -37,7 +37,7 @@ group :development do
 end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "bootstrap", ">= 4.3.1"
-gem "devise", ">= 4.7.1"
+gem "devise", ">= 4.7.3"
 gem 'high_voltage'
 
 group :development do
