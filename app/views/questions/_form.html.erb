@@ -22,7 +22,7 @@
   </div>
 
   <div class="field">
-    <%= f.association :answers, :collection => @answer_list, :include_blank => false %>
+    <%= f.association :answers, :collection => @answer_list, :include_blank => false, input_html: { size: 80}%>
   </div>
 
   <div class="field">
