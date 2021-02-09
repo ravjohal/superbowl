@@ -37,7 +37,11 @@
 		  	<tr>
 		  		<td><%= prop_bet.question.question %> </td>
 				<td><%= prop_bet.question.weight %> </td>
-				<td><%= prop_bet.earned_point %> </td>
+				<% if prop_bet.answer == prop_bet.question.correct_answer %>
+					<td> <%= prop_bet.question.weight %> </td>
+				<% else %>
+					<td/>
+				<% end %>
 				<td><%= prop_bet.answer.try(:name) %> </td>
 				<% if prop_bet.question.correct_answer %>
 					<td><%= prop_bet.question.correct_answer.name %> </td>
