@@ -10,5 +10,10 @@ class PropBet < ApplicationRecord
 			:reject_if => :all_blank,
             :allow_destroy => true
 
+	def earned_point
+		if self.answer == self.correct_answer
+			self.question.weight
+		end
+	end
 
 end

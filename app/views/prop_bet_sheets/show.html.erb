@@ -25,7 +25,8 @@
 		<thead>
 		    <tr>
 		      <th>Question</th>
-		      <th>Points</th>
+		      <th>Total Weight</th>
+		      <th>Total Earned</th>
 		      <th>Your Answer</th>
 		      <th>Correct Answer</th>
 		    </tr>
@@ -36,6 +37,7 @@
 		  	<tr>
 		  		<td><%= prop_bet.question.question %> </td>
 				<td><%= prop_bet.question.weight %> </td>
+				<td><%= prop_bet.earned_point %> </td>
 				<td><%= prop_bet.answer.try(:name) %> </td>
 				<% if prop_bet.question.correct_answer %>
 					<td><%= prop_bet.question.correct_answer.name %> </td>
